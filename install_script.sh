@@ -261,7 +261,7 @@ install_caddy_tls() {
         echo_content yellow "正在检测域名,请稍后..."
         ping_ip=$(ping "${domain}" -s1 -c1 | grep "ttl=" | head -n1 | cut -d"(" -f2 | cut -d")" -f1)
         curl_ip=$(curl ifconfig.me)
-        if [[ "${ping_ip}" != "${curl_ip}" ]]; then
+        if [[ "${ping_ip}" != "${curl_ip}" && false ]]; then
           echo_content yellow "你的域名没有解析到本机IP,请稍后再试: ${ping_ip} ${curl_ip}"
           echo_content red "---> Caddy安装失败"
           exit 0
